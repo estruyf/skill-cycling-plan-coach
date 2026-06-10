@@ -59,7 +59,6 @@ Build the workout files inside this skill based on the `workoutFormat` choice fr
 
 - Session archetypes, rotation rules, and progression steps live in `references/workout-library.md`.
 - ZWO format spec (Zwift): `references/zwo-format.md` — power as FTP fractions, durations in seconds, XML output.
-- FIT format spec (Garmin): `references/garmin-connect-format.md` — power as absolute watts, Python script output that produces a `.fit` file via `pip install fit-tool`.
 - Before selecting sessions, check the archetypes extracted from last week's Strava rides (Step 1). Do not repeat the same archetype unless advancing it by one progression step. Use the rotation table in `references/workout-library.md` to pick this week's pair.
 - Every structured bike session must produce one workout file per requested format.
 - Use `% FTP` for planning and convert to watts in the markdown plan using the week's FTP.
@@ -76,8 +75,7 @@ Save everything to `/mnt/user-data/outputs/` and present it. If that path is una
 1. One weekly plan markdown file, named by week id using ISO 8601 week numbering (e.g. `2026-W26-plan.md`; note week 1 may start in late December of the prior year). Follow the structure in `references/plan-format.md`. Include: week id, goal, detected rider type, FTP used, one-line last-week summary, day-by-day schedule table, structured session detail blocks (% FTP and converted watts), group-ride guidance, and strength/core exercises (mapped from `references/strength-library.md`).
 2. One workout file per structured bike session per requested format:
    - **ZWO** (if `workoutFormat` is `"zwo"` or `"both"`): built using `references/zwo-format.md`. On-screen cues in the config language. Rendered inline as a fenced XML code block.
-   - **FIT** (if `workoutFormat` is `"fit"` or `"both"`): a Python script built using `references/garmin-connect-format.md`. Rendered inline as a fenced Python code block with a one-line run instruction.
-   Filenames must be listed in the markdown plan under their matching day.
+     Filenames must be listed in the markdown plan under their matching day.
 3. When there is a full gym session, add a dedicated markdown file (e.g. `2026-W26-strength.md`) with sets, reps, rest, and coaching cues in the config language. Reference it from the main plan.
 
 ## Quality checks before delivering
@@ -87,5 +85,5 @@ Save everything to `/mnt/user-data/outputs/` and present it. If that path is una
 3. Every structured bike day in the markdown references exactly one workout file per requested format; watt targets in markdown match the % FTP targets at the stated FTP.
 4. Session priorities match the detected rider type and the goal.
 5. The week works toward the goal, structured days capped, group days social, strength off the pre-interval day, last week factored in.
-6. Every workout file passes the validation checklist in its format reference (`references/zwo-format.md` for ZWO, `references/garmin-connect-format.md` for FIT) and is rendered inline as a labeled fenced code block.
+6. Every workout file passes the validation checklist in its format reference (`references/zwo-format.md` for ZWO) and is rendered inline as a labeled fenced code block.
 7. All human-readable text is in the config language and units, honoring `styleNotes`. State the week id, focus, detected rider type, last week in one line, and which files you created.
