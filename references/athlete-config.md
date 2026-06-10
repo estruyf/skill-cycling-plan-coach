@@ -20,6 +20,7 @@ This file is the single source of truth for who a plan is for. Each user owns th
 | `maxStructuredSessions` | integer | Cap on structured key sessions per week (usually 2). |
 | `strengthDefault` | string | `strength+core`, `core`, or `none`. |
 | `riderTypeOverride` | string or null | Force a rider type (`sprinter`, `allrounder`, `diesel`) instead of deriving it. Null means derive from the power curve. |
+| `workoutFormat` | string | Preferred workout file format: `"zwo"` (Zwift XML), `"fit"` (Garmin — Python script that generates a `.fit` file via `fit-tool`), or `"both"`. Stored after the athlete confirms their choice during intake. |
 
 ## How age and gender influence the plan
 
