@@ -1,6 +1,6 @@
 ---
 name: cycling-plan-coach
-description: Plan a cyclist's training week as a standalone coaching package with integrated workout building. Use whenever the athlete asks to plan a week or the upcoming week ("plan my week", "build my training week", "weekschema", "maak een plan voor volgende week", or any localized equivalent), or states a goal for the week. The flow reads a per-athlete config, pulls recent Strava data, classifies rider type from the athlete's own power curve, then produces one weekly markdown plan and structured bike workouts (ZWO for Zwift, FIT Python script for Garmin, or both) per structured bike session without relying on another skill. Works for any cyclist, not one fixed person.
+description: Plan a cyclist's training week as a standalone coaching package with integrated workout building. Use whenever the athlete asks to plan a week or the upcoming week ("plan my week", "build my training week", "weekschema", "maak een plan voor volgende week", or any localized equivalent), or states a goal for the week. The flow reads a per-athlete config, pulls recent Strava data, classifies rider type from the athlete's own power curve, then produces one weekly markdown plan and structured bike workouts (ZWO for Zwift) per structured bike session without relying on another skill. Works for any cyclist, not one fixed person.
 metadata:
   author: Elio Struyf <elio@struyfconsulting.be>
   license: MIT
@@ -8,7 +8,7 @@ metadata:
 
 # Cycling plan coach
 
-Turn a short conversation into ready-to-use standalone files for coaching: a weekly markdown plan and the structured bike workouts it references. Workouts can be generated as `.zwo` (Zwift), a Python script that produces a `.fit` file (Garmin), or both. The athlete's identity, goal, language and units come from a config file, not from this skill, so it works for anyone.
+Turn a short conversation into ready-to-use standalone files for coaching: a weekly markdown plan and the structured bike workouts it references. Workouts are generated as `.zwo` (Zwift). The athlete's identity, goal, language and units come from a config file, not from this skill, so it works for anyone.
 
 ## Resolve config first (every run)
 
@@ -31,7 +31,7 @@ At the start of every weekly planning run, ask a short weekly-availability intak
 - Planned duration per workout day.
 - Strength preference this week: strength, core, or both.
 - Frequency for strength/core this week (how many times).
-- Workout file format: **ZWO** (Zwift), **FIT** (Garmin — Python script that generates a `.fit` file), or **both**. If the athlete has previously stated a format preference, confirm and allow override; otherwise ask. Store the choice as `workoutFormat` in `athlete.json` (`"zwo"`, `"fit"`, or `"both"`) after confirmation.
+- Workout file format: **ZWO** (Zwift). Store `"zwo"` as `workoutFormat` in `athlete.json` after confirmation.
 
 Always offer a one-step option to use predefined values from `athlete.json` profile config (for example: typical training days, `groupRideDays`, `strengthDefault`, and any stored duration preferences). If the athlete chooses profile defaults, confirm what was applied and only ask for overrides.
 
@@ -55,27 +55,24 @@ Use the FTP from Strava (fallback: `fallbackFtp`), the rider type from Step 2, a
 
 ### Step 5 - build structured workouts
 
-Build the workout files inside this skill based on the `workoutFormat` choice from intake (`"zwo"`, `"fit"`, or `"both"`).
+Build the workout files inside this skill in ZWO format.
 
 - Session archetypes, rotation rules, and progression steps live in `references/workout-library.md`.
 - ZWO format spec (Zwift): `references/zwo-format.md` — power as FTP fractions, durations in seconds, XML output.
 - Before selecting sessions, check the archetypes extracted from last week's Strava rides (Step 1). Do not repeat the same archetype unless advancing it by one progression step. Use the rotation table in `references/workout-library.md` to pick this week's pair.
 - Every structured bike session must produce one workout file per requested format.
 - Use `% FTP` for planning and convert to watts in the markdown plan using the week's FTP.
-- For ZWO: store power as FTP fractions and durations in seconds. Add localized `textevent` cues in the athlete's language.
-- For FIT: compute absolute watts from the week's FTP (±5 W band), generate a self-contained Python script. Add a one-line run instruction after the code block.
+- Store power as FTP fractions and durations in seconds. Add localized `textevent` cues in the athlete's language.
 - Keep hard sessions capped by `maxStructuredSessions` and aligned with the polarized model.
 - Run through the validation checklist in the relevant format reference before delivering.
-- Output every workout file inline as a labeled fenced code block (XML for ZWO, Python for FIT) so the athlete can read and copy it directly from Claude's UI.
+- Output every workout file inline as a labeled fenced XML code block so the athlete can read and copy it directly from Claude's UI.
 
 ### Step 6 - produce the files
 
 Save everything to `/mnt/user-data/outputs/` and present it. If that path is unavailable, deliver all files inline in the response instead. Human-readable text in the config `language`; distances and speeds in the config `units`. Machine keys stay English; filenames stay lowercase-hyphenated and neutral.
 
 1. One weekly plan markdown file, named by week id using ISO 8601 week numbering (e.g. `2026-W26-plan.md`; note week 1 may start in late December of the prior year). Follow the structure in `references/plan-format.md`. Include: week id, goal, detected rider type, FTP used, one-line last-week summary, day-by-day schedule table, structured session detail blocks (% FTP and converted watts), group-ride guidance, and strength/core exercises (mapped from `references/strength-library.md`).
-2. One workout file per structured bike session per requested format:
-   - **ZWO** (if `workoutFormat` is `"zwo"` or `"both"`): built using `references/zwo-format.md`. On-screen cues in the config language. Rendered inline as a fenced XML code block.
-     Filenames must be listed in the markdown plan under their matching day.
+2. One ZWO workout file per structured bike session, built using `references/zwo-format.md`. On-screen cues in the config language. Rendered inline as a fenced XML code block. Filenames must be listed in the markdown plan under their matching day.
 3. When there is a full gym session, add a dedicated markdown file (e.g. `2026-W26-strength.md`) with sets, reps, rest, and coaching cues in the config language. Reference it from the main plan.
 
 ## Quality checks before delivering

@@ -16,15 +16,15 @@ One file per week, named `YYYY-Wnn-plan.md`. Everything the athlete reads is in 
 
 ### 2. Schedule table
 
-List every day Mon–Sun. Structured sessions must show the workout filename(s). Use `.zwo` for ZWO output, `.py` (→ `.fit`) for Garmin FIT output, or both when the athlete requested both formats.
+List every day Mon–Sun. Structured sessions must show the workout filename (`.zwo`).
 
 ```markdown
 | Day | Session | Duration | Notes |
 |-----|---------|----------|-------|
 | Mon | Rest | — | |
-| Tue | Sweet spot 2×20 | 65 min | `sweet-spot-2x20.zwo` · `sweet-spot-2x20.py` |
+| Tue | Sweet spot 2×20 | 65 min | `sweet-spot-2x20.zwo` |
 | Wed | Endurance Z2 | 90 min | Easy outdoor or indoor |
-| Thu | VO2max 5×4 | 60 min | `vo2max-5x4.zwo` · `vo2max-5x4.py` |
+| Thu | VO2max 5×4 | 60 min | `vo2max-5x4.zwo` |
 | Fri | Strength + core | 45 min | See strength section |
 | Sat | Group ride | — | Social, no structure |
 | Sun | Long endurance | 120 min | Z2 outdoor |
@@ -36,7 +36,7 @@ One subsection per structured bike day. Convert every % FTP target to watts usin
 
 ```markdown
 ### Tuesday – Sweet spot 2×20
-File(s): `sweet-spot-2x20.zwo` · `sweet-spot-2x20.py` (→ `sweet-spot-2x20.fit`)
+File: `sweet-spot-2x20.zwo`
 Targets: 90% FTP · 2 × 20 min @ **221 W** (90% of 245 W), 5 min easy @ 123 W between.
 Warmup 10 min ramp 45→75%, cooldown 10 min.
 Total: ~65 min.
@@ -97,7 +97,7 @@ Warmup 10 min ramp 45→75%, cooldown 10 min.
 Total: ~65 min.
 
 ### Thursday – VO2max 5×4
-File(s): `vo2max-5x4.zwo` · `vo2max-5x4.py` (→ `vo2max-5x4.fit`)
+File: `vo2max-5x4.zwo`
 Targets: 115% FTP · 5 × 4 min @ **282 W**, 4 min easy @ **123 W** between. High cadence 95+ rpm.
 Warmup 15 min, cooldown 10 min.
 Total: ~60 min.
