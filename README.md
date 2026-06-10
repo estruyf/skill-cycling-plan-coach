@@ -52,4 +52,9 @@ This skill makes general endurance-training assumptions from public training pri
 
 ## License
 
-MIT. See LICENSE.
+MIT. See [LICENSE](LICENSE).
+
+<br />
+<br />
+
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fskill-cycling-plan-coach&countColor=%23263759)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fskill-cycling-plan-coach)
