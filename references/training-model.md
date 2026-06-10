@@ -13,6 +13,14 @@ Find the limiter from the data, not from a template. A strong top end with modes
 - If a group ride ran hard, treat it as a quality day and soften the next midweek session. Never three hard days back to back.
 - Steer by power, not heart rate. Put watt targets first and allow backing off on feel.
 
+## Recovery rules by age
+
+Apply these on top of the polarized structure. Read `age` from `athlete.json`.
+
+- **Under 40:** one easy or rest day between hard sessions is sufficient.
+- **40–49 (masters):** aim for two easy days between hard sessions; avoid back-to-back hard days entirely.
+- **50+ (senior masters):** default to two easy or rest days between hard sessions; reduce total weekly volume before reducing intensity; recovery weeks every 2–3 weeks instead of every 4.
+
 ## Standard session shapes
 
 - Sweet spot: 2 x 20 min at ~90% FTP, 5 min easy between. Grows to 2 x 25.

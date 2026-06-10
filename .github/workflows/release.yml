@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Build skill
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: cycling-plan-coach-skill
+          path: "*.skill"
+          retention-days: 30

@@ -1,4 +1,4 @@
-# cycling-week-coach
+# cycling-plan-coach
 
 A reusable Claude skill that plans a cyclist's training week. It reads a per-athlete config, pulls the athlete's recent Strava data, classifies their rider type from their own power curve, and outputs a standalone weekly package: a markdown week plan plus importable `.zwo` bike workouts for structured days.
 
@@ -7,11 +7,21 @@ It works for any cyclist. Nothing about the athlete is hardcoded in the skill; i
 ## What it needs
 
 - A connected Strava account (the skill pulls FTP, recent rides, and a power curve). Without it, the skill falls back to the FTP in the config.
-- Optional: a `zwo-workout-builder` skill for richer workout files. If absent, the skill follows `references/zwo-format.md`.
+- No second workout skill is required. ZWO creation is built in via `references/workout-library.md` and `references/zwo-format.md`.
 
 ## Install
 
-Drop the `cycling-week-coach` folder into your Claude skills directory.
+Download the `cycling-plan-coach.skill` file and drop it into your Claude skills directory.
+
+## Usage
+
+Once installed, invoke the skill from Claude with:
+
+```
+/cycling-plan-coach
+```
+
+Or ask naturally — phrases like "plan my week", "build my training week", or "make me a training plan for the upcoming week" trigger it automatically.
 
 ## First run
 
@@ -28,7 +38,7 @@ The coaching is data-driven, not a fixed template. Each week the skill:
 5. builds a polarized week toward your goal,
 6. outputs the files in your language and units.
 
-See `references/` for the config schema, onboarding, rider-type logic, plan format, Strava mapping, training model, strength library, and the ZWO fallback.
+See `references/` for the config schema, onboarding, rider-type logic, plan format, Strava mapping, training model, strength library, workout library, and ZWO format.
 
 ## Output
 

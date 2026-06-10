@@ -1,6 +1,6 @@
 # Strength and core library (cycling-focused)
 
-Generic exercise bank. Translate `name`, `load` and `rest` into the athlete's language when mapping into `exercises[]`. Goal is durable force and stability, not mass. Once or twice a week, never the day before VO2max or threshold. Tune to the athlete: more posterior chain for power, more single-leg and core for stability.
+Generic exercise bank. Translate exercise names, load cues, and rest cues into the athlete's language when building the session. Goal is durable force and stability, not mass. Once or twice a week, never the day before VO2max or threshold. Tune to the athlete: more posterior chain for power, more single-leg and core for stability.
 
 ## Strength (legs and posterior chain)
 
@@ -28,4 +28,4 @@ Generic exercise bank. Translate `name`, `load` and `rest` into the athlete's la
 - Full strength session: 2-3 strength lifts + 2 core moves.
 - Core only: 3-4 core moves.
 - Warm up 5-10 min before loading. Progress by load on the compounds, not by adding reps.
-- Map each chosen exercise as an item in `exercises[]` with `name`, `sets`, `reps`, `load`, `rest`.
+- List each chosen exercise in the strength-section table from `plan-format.md`: exercise name, sets × reps, load/cue, and rest.
