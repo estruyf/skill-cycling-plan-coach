@@ -25,7 +25,7 @@ for item in "${BUNDLE[@]}"; do
 done
 
 # Stamp the version from package.json into the staged SKILL.md frontmatter
-perl -i -pe "s/^  version: \"[^\"]*\"/  version: \"$VERSION\"/" "$STAGE/$SKILL_NAME/SKILL.md"
+perl -i -pe "s/^  version: .*\$/  version: $VERSION/" "$STAGE/$SKILL_NAME/SKILL.md"
 
 rm -f "$OUTPUT_FILE"
 (
