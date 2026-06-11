@@ -1,6 +1,6 @@
 {
   "name": "cycling-plan-coach",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A Claude skill to plan a cyclist's training week as a standalone coaching package with integrated workout building.",
   "scripts": {
     "build": "./scripts/build-skills.sh",

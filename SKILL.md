@@ -1,6 +1,6 @@
 ---
 name: cycling-plan-coach
-description: Plan a cyclist's training week as a standalone coaching package with integrated workout building. Use whenever the athlete asks to plan a week or the upcoming week ("plan my week", "build my training week", "weekschema", "maak een plan voor volgende week", or any localized equivalent), or states a goal for the week. The flow reads a per-athlete config, pulls recent Strava data, classifies rider type from the athlete's own power curve, then produces one weekly markdown plan and structured bike workouts (ZWO for Zwift) per structured bike session without relying on another skill. Works for any cyclist, not one fixed person.
+description: Plan a cyclist's training week as a standalone coaching package with integrated workout building. Use whenever the athlete asks to plan a week or the upcoming week ("plan my week", "build my training week", "week schema", "plan a week workout schedule", or any localized equivalent), or states a goal for the week. The flow reads a per-athlete config, pulls recent Strava data, classifies rider type from the athlete's own power curve, then produces one weekly markdown plan and structured bike workouts (ZWO for Zwift) per structured bike session without relying on another skill. Works for any cyclist, not one fixed person.
 metadata:
   author: Elio Struyf <elio@struyfconsulting.be>
   license: MIT

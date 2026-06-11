@@ -42,9 +42,9 @@ See `references/` for the config schema, onboarding, rider-type logic, plan form
 
 ## Output
 
-- `2026-Wnn-plan.md` - the full weekly plan in readable markdown.
+- `YYYY-Wnn-plan.md` - the full weekly plan in readable markdown.
 - `*.zwo` - one per structured bike session.
-- `2026-Wnn-strength.md` (optional) - full gym session details when strength work is scheduled.
+- `YYYY-Wnn-strength.md` (optional) - full gym session details when strength work is scheduled.
 
 ## Note
 
