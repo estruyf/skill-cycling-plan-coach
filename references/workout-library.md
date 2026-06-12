@@ -12,15 +12,18 @@ Use the ISO 8601 week number mod 3 to pick the row (e.g. week 27 → 27 % 3 = 0)
 
 | Week mod 3 | Sprinter / puncheur | All-rounder | Diesel |
 |------------|---------------------|-------------|--------|
-| 0 | Sweet spot + Over-unders | Sweet spot + VO2max | VO2max + 40/20s |
-| 1 | Threshold + VO2max | Over-unders + 40/20s | Sweet spot + Over-unders |
-| 2 | Over-unders + Sweet spot | VO2max + Sweet spot | 40/20s + VO2max |
+| 0 | Sweet spot + Over-unders | Sweet spot + 30/15s | 30/15s + 40/20s |
+| 1 | Threshold + 30/15s | Over-unders + 40/20s | Sweet spot + Over-unders |
+| 2 | Over-unders + Sweet spot | 30/15s + Sweet spot | 40/20s + 30/15s |
+
+> **30/15s (Rønnestad) replaces the classic VO2max slot throughout.** Research (Rønnestad et al.) shows 3 × 13 reps outperform 4–5 min evenly-paced intervals for VO2max and power gains in well-trained cyclists. Classic VO2max (4×4 min) may substitute any 30/15s slot if the athlete genuinely prefers longer efforts.
 
 **Progression within an archetype** (when the same type repeats after a gap):
 
 | Archetype | Step 1 | Step 2 | Step 3 |
 |-----------|--------|--------|--------|
 | Sweet spot | 2 × 20 min @ 88% | 2 × 20 min @ 90% | 2 × 25 min @ 90% or 3 × 15 min @ 92% |
+| 30/15s (Rønnestad) | 2 sets × 13 reps @ 110% | 3 sets × 13 reps @ 110% | 3 sets × 13 reps @ 112–115% |
 | VO2max | 4 × 4 min @ 110% | 5 × 4 min @ 112% | 5 × 4 min @ 115–120% |
 | 40/20s | 2 sets × 8 reps @ 118% | 2 sets × 9 reps @ 120% | 3 sets × 8 reps @ 120% |
 | Over-unders | 3 × (3 min / 1 min) | 3 × (4 min / 1 min) | 4 × (3 min / 1 min) |
@@ -40,6 +43,12 @@ Start a returning archetype at the step the athlete last completed, then advance
 - **Shape:** 2-3 sets of 8-10 reps, 40s @ 118-125% / 20s @ ~50%. 5 min easy between sets.
 - **Variant:** 30/30s (30s @ 115-120% / 30s easy) for slightly lower peak, more reps.
 - **Purpose:** race-specific session for answering attacks without cracking.
+
+### 30/15s (Rønnestad)
+- **Shape:** 3 sets × 13 reps, 30s @ 110–115% / 15s @ ~50–55%. 3 min easy between sets.
+- **Progression:** start at 2 sets × 13 reps, build to 3 sets, then increase intensity to 112–115%.
+- **Cadence:** accelerate hard in the first 10s of each work rep, target 95–105 rpm. Drop cadence on the 15s rest but stay pedalling — no coasting.
+- **Purpose:** maximises accumulated time at ≥90% VO₂max. Rønnestad et al. showed 3 × 13 reps produces significantly greater VO₂max and power gains than traditional 4–5 min long intervals in well-trained cyclists. The 15s is not full recovery — it should feel like tempo, just enough to re-hit the next 30s effort hard.
 
 ### Over-unders
 - **Shape:** 3 x (3 min @ 95% / 1 min @ 105%), 5 min easy between. Build toward 4 min over-under blocks.
@@ -68,7 +77,7 @@ Start a returning archetype at the step the athlete last completed, then advance
 | Day | Session | Format |
 |---|---|---|
 | Mon | Rest or easy spin | - / short Z2 .zwo |
-| Tue | VO2max 5x4 | .zwo |
+| Tue | 30/15s Rønnestad 3×13 | .zwo |
 | Wed | Endurance Z2 | .zwo or outdoor |
 | Thu | 40/20s 3x9 | .zwo |
 | Fri | Rest / easy | - |
