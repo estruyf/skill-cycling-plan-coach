@@ -4,7 +4,7 @@ description: Plan a cyclist's training week as a standalone coaching package wit
 metadata:
   author: Elio Struyf <elio@struyfconsulting.be>
   license: MIT
-  version: 1.0.0
+  version: 2.2.0
 ---
 
 # Cycling plan coach

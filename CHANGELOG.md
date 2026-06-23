@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-06-23
+
+### Added
+
+- **Muscle Tension (MT) session archetype** in `references/workout-library.md`. Structure: 3-5 × 6-8 min at 55-65 RPM / 70-80% FTP, seated with high resistance. Targets neuromuscular recruitment and climbing-specific leg force with low cardio cost.
+- **Stomps session archetype** — 6-10 × 10-12s maximal seated efforts from a rolling start in the biggest gear. Pure neuromuscular power development, distinct from sprint intervals.
+- **Descending Intervals (DI) archetype** — maximal efforts that decrease in duration each rep (e.g. 3 min → 2 min → 1 min), 110+ RPM. Trains the ability to produce power when already fatigued.
+- **Progression rows for Muscle Tension and Stomps** in the archetype progression table.
+- **4-week block periodization** guidance in `references/training-model.md`: 3 progressive build weeks followed by 1 taper/test week (segment attempt or time trial). Includes a 2+1 variant for masters athletes (50+).
+- **Muscle Tension and Stomps** added to the standard session shapes section of `references/training-model.md`.
+
+### Changed
+
+- **Cadence targets** added to all existing hard session archetypes in `references/workout-library.md` (Sweet spot 85-95 RPM, Threshold 85-95 RPM, Over-unders 90-100 RPM, VO2max 90-100 RPM, 40/20s 95-105 RPM, 30/15s 95-105 RPM) and to Endurance Z2 (85-95 RPM).
+
 ## [2.1.0] - 2026-06-12
 
 ### Added
