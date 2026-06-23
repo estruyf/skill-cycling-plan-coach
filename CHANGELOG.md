@@ -14,10 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Progression rows for Muscle Tension and Stomps** in the archetype progression table.
 - **4-week block periodization** guidance in `references/training-model.md`: 3 progressive build weeks followed by 1 taper/test week (segment attempt or time trial). Includes a 2+1 variant for masters athletes (50+).
 - **Muscle Tension and Stomps** added to the standard session shapes section of `references/training-model.md`.
+- **Garmin Coach Export integration** (`references/garmin-data.md`). The skill now accepts a pasted Garmin JSON export (produced by the [Garmin Workout Importer](https://chromewebstore.google.com/detail/garmin-workout-importer/faebbfokokipdpkbolpbpfadmgdbanpo) Chrome extension) as a first-class data source alongside Strava. Fields covered: FTP, VO2max, LTHR, 7-zone power model, 5-zone HR model, readiness (HRV, body battery, sleep score), training load (ATL, CTL, ACWR, training status, recovery window), and recent activities with TSS/NP.
+- **Readiness-driven plan adjustments** — training readiness score, HRV status, and ACWR now trigger automatic load adjustments (soften hard sessions when score < 40 or ACWR > 1.3; prime the athlete to push when score ≥ 70 and ACWR is in the optimal range).
+- **NP/FTP classification table** for Garmin activities (which lack workout names): maps the NP-to-FTP ratio to an effort tier (endurance, tempo, sweet spot, over-threshold, VO2max/anaerobic).
+- **Readiness header line** in the weekly plan format (`references/plan-format.md`) — surfaces score, HRV, sleep, ACWR, training status, and recovery window at a glance when Garmin data is provided.
+- **Weekly intake prompt** in `SKILL.md` now explicitly asks whether the athlete has a Garmin export and directs Garmin Connect users to the Chrome extension.
 
 ### Changed
 
 - **Cadence targets** added to all existing hard session archetypes in `references/workout-library.md` (Sweet spot 85-95 RPM, Threshold 85-95 RPM, Over-unders 90-100 RPM, VO2max 90-100 RPM, 40/20s 95-105 RPM, 30/15s 95-105 RPM) and to Endurance Z2 (85-95 RPM).
+- **Step 1 (data pull)** in `SKILL.md` restructured to handle three scenarios: Garmin only, Strava only, or both. When both are present, Garmin supplies zones and readiness; Strava supplies activity names for archetype extraction.
 
 ## [2.1.0] - 2026-06-12
 

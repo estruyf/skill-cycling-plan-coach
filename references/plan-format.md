@@ -11,7 +11,8 @@ One file per week, named `YYYY-Wnn-plan.md`. Everything the athlete reads is in 
 **Goal:** <goal from config>
 **Focus:** <one-line week aim>
 **FTP:** <N> W · **Rider type:** <type> · **Target W/kg:** <N> *(omit if not set)*
-**Last week:** <one-sentence Strava summary>
+**Last week:** <one-sentence Strava/activity summary>
+**Readiness:** <score N / level> · HRV <status> · Sleep <score>/100 · ACWR <N> · Status: <training_status> · Recovery window: <N> h *(omit entire line if no Garmin data)*
 ```
 
 ### 2. Schedule table

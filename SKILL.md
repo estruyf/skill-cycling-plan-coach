@@ -33,14 +33,25 @@ At the start of every weekly planning run, ask a short weekly-availability intak
 - Strength preference this week: strength, core, or both.
 - Frequency for strength/core this week (how many times).
 - Workout file format: **ZWO** (Zwift). Store `"zwo"` as `workoutFormat` in `athlete.json` after confirmation.
+- **Garmin export (optional):** Ask once per session whether the athlete has a Garmin Coach JSON export. If yes, accept the pasted JSON and process it using `references/garmin-data.md` before any session design. If the athlete is on Garmin Connect, point them to the Garmin Workout Importer Chrome extension (https://chromewebstore.google.com/detail/garmin-workout-importer/faebbfokokipdpkbolpbpfadmgdbanpo) to generate the export. If the athlete provides neither Strava access nor a Garmin export, continue with `fallbackFtp` and config values only.
 
 Always offer a one-step option to use predefined values from `athlete.json` profile config (for example: typical training days, `groupRideDays`, `strengthDefault`, and any stored duration preferences). If the athlete chooses profile defaults, confirm what was applied and only ask for overrides.
 
 ## Main workflow
 
-### Step 1 - pull recent Strava data
+### Step 1 - pull data (Garmin export and/or Strava)
 
-Retrieve the athlete's own numbers so the plan is grounded in what they did. Tool calls and mapping are in `references/strava-pull.md`. Get: current FTP and zones (overrides `fallbackFtp`); gender from the athlete profile (populate `athlete.json` only if the field is currently absent — never overwrite a stated preference; see `references/strava-pull.md`); the last 10 to 14 days of activities to review last week and spot fatigue; and the power-duration curve from the most recent hard ride. Summarise last week back to the athlete in their language. If Strava is unreachable, say so, use `fallbackFtp`, and continue — age and gender still come from the config.
+Retrieve the athlete's current numbers and recent history. Use whichever sources are available:
+
+**Garmin export (if provided):** Process using `references/garmin-data.md`. Extract FTP, LTHR, zones, readiness (HRV, sleep, body battery, training readiness score), load (ATL, CTL, ACWR, training status, recovery window), and recent activity TSS/NP. These override `fallbackFtp` and enrich the plan with readiness context that Strava cannot provide.
+
+**Strava (if connected):** Tool calls and mapping are in `references/strava-pull.md`. Get: current FTP and zones; gender from the athlete profile (populate `athlete.json` only if the field is currently absent — never overwrite a stated preference); the last 10 to 14 days of activities; and the power-duration curve from the most recent hard ride. Strava activity names are preferred for archetype extraction.
+
+**When both are provided:** Use Garmin for zones, readiness, and load; use Strava for activity names and relative effort. If FTP values differ, note the discrepancy and ask the athlete which to use.
+
+**When neither is available:** Use `fallbackFtp` and continue — age and gender come from the config.
+
+Summarise last week and the readiness state back to the athlete in their language in one or two sentences. If readiness data triggers a plan adjustment, state it explicitly.
 
 ### Step 2 - classify rider type (data-driven)
 
