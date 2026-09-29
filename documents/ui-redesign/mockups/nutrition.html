@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nutrition log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#1B1F22; --ink-soft:#5B6368; --ink-faint:#8A9095;
+  --paper:#FAF8F4; --surface:#FFFFFF; --line:#E4E0D6; --line-soft:#EEEBE3;
+  --brand:#1D5C63; --brand-dark:#12363B; --brand-tint:#E1EEEC; --brand-strong:#144247;
+  --accent:#DD5B27; --accent-tint:#FBE7DB;
+  --good:#1F8A57; --good-tint:#E3F3EA;
+  --warning:#B9790A; --warning-tint:#FBF0D9;
+  --serious:#C2542E; --serious-tint:#FBE7DE;
+  --critical:#C22B2B; --critical-tint:#FAE0E0;
+  --radius-s:8px; --radius-m:12px; --radius-l:20px;
+  --shadow:0 1px 2px rgba(20,24,26,.04), 0 8px 24px rgba(20,24,26,.06);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;margin:0;letter-spacing:-0.01em;}
+a{color:var(--brand);text-decoration:none;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+input,select,textarea{font-family:inherit;}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;color:#fff;font-size:14px;}
+.brand-name{font-family:'Sora';font-weight:700;font-size:15px;color:#fff;line-height:1.15;}
+.brand-sub{font-size:11px;color:rgba(243,241,234,.55);}
+.nav-item{padding:10px 12px;border-radius:10px;color:rgba(243,241,234,.72);font-size:14px;font-weight:500;}
+.nav-item.active{background:rgba(243,241,234,.14);color:#fff;}
+.nav-item:hover{color:#fff;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;font-family:'Sora';flex:0 0 32px;}
+.sidebar-foot-name{font-size:13px;font-weight:600;color:#fff;}
+.sidebar-foot-sub{font-size:11px;color:rgba(243,241,234,.55);}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+.page-title{font-size:26px;font-weight:700;}
+.page-sub{color:var(--ink-soft);font-size:14px;margin-top:6px;max-width:640px;line-height:1.5;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:var(--radius-s);font-size:14px;font-weight:600;border:1px solid transparent;cursor:pointer;}
+.btn-primary{background:var(--brand);color:#fff;}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;}
+.badge-good{background:var(--good-tint);color:var(--good);}
+.badge-critical{background:var(--critical-tint);color:var(--critical);}
+.stat{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 18px;}
+.stat-label{font-size:11.5px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.stat-value{font-family:'Sora';font-size:22px;font-weight:700;margin-top:4px;}
+.field label{font-size:12px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:6px;}
+.input{width:100%;border:1px solid var(--line);border-radius:var(--radius-s);padding:9px 11px;font-size:13.5px;background:var(--surface);color:var(--ink);}
+.seg{display:flex;border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;}
+.seg span{padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink-soft);flex:1;text-align:center;}
+.seg span.on{background:var(--good-tint);color:var(--good);}
+table{border-collapse:collapse;width:100%;font-size:13px;}
+th{text-align:left;font-weight:600;color:var(--ink-faint);font-size:11px;letter-spacing:.03em;text-transform:uppercase;padding:0 10px 9px;border-bottom:1px solid var(--line);}
+td{padding:11px 10px;border-bottom:1px solid var(--line-soft);}
+
+body { display: flex; justify-content: center; padding: 24px; background: #E4E0D6; }
+</style>
+</head>
+<body>
+<div style="width:1440px;height:1060px;display:flex;background:var(--paper);overflow:hidden;">
+
+  <div class="card" style="width:248px;flex:0 0 248px;background:var(--brand-dark);border-radius:0;border:none;box-shadow:none;display:flex;flex-direction:column;padding:28px 18px;gap:28px;">
+    <div style="display:flex;align-items:center;gap:10px;padding:0 6px;">
+      <div class="brand-mark">CP</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="brand-name">Cycling Plan Coach</span>
+        <span class="brand-sub">Badlands Ultra · Jun 6</span>
+      </div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;flex:1;">
+      <a href="plan.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Today's plan
+      </a>
+      <a href="season.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L14 7l-3 5-2-3-3 6z"/></svg>
+        Season plan
+      </a>
+      <a href="nutrition.html" class="nav-item active" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7a3 3 0 0 0 6 0V3M10 3v7"/><path d="M17 3s-2 2-2 6 2 12 2 12"/></svg>
+        Nutrition log
+      </a>
+      <a href="strength.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.4 12h9.2"/></svg>
+        Strength log
+      </a>
+      <a href="compliance.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V11M12 21V7M19 21v-5M3 21h18"/></svg>
+        Compliance
+      </a>
+    </nav>
+    <div style="border-top:1px solid rgba(243,241,234,.14);padding-top:16px;display:flex;align-items:center;gap:10px;">
+      <div class="avatar">DM</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="sidebar-foot-name">David Macken</span>
+        <span class="sidebar-foot-sub">Diesel · FTP 268W</span>
+      </div>
+      <a href="login.html" style="margin-left:auto;color:rgba(243,241,234,.5);" title="Sign out">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;overflow:auto;padding:34px 42px 40px;display:flex;flex-direction:column;">
+
+    <div style="margin-bottom:20px;">
+      <div class="eyebrow">Daily fueling</div>
+      <h1 class="page-title">Nutrition log</h1>
+      <p class="page-sub">Carbs, calories, hydration and body weight — the fueling ramp the coach reads back into your plan.</p>
+    </div>
+
+    <div style="display:flex;gap:14px;margin-bottom:22px;flex-wrap:wrap;">
+      <div class="stat"><div class="stat-label">7-day avg carbs</div><div class="stat-value mono">78 g/hr</div></div>
+      <div class="stat"><div class="stat-label">Target hit rate</div><div class="stat-value mono">6 / 7 days</div></div>
+      <div class="stat"><div class="stat-label">Latest weight</div><div class="stat-value mono">71.4 kg</div></div>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:26px;">
+      <h2 style="font-size:14.5px;font-weight:700;margin-bottom:14px;">Log today</h2>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:14px;">
+        <div class="field"><label>Date</label><input class="input" type="date" value="2026-03-11"></div>
+        <div class="field" style="grid-column:span 2;"><label>Carb target</label>
+          <div class="seg"><span class="on">Hit</span><span>Missed</span></div>
+        </div>
+        <div class="field"><label>Carbs (g)</label><input class="input" type="number" value="310" placeholder="0"></div>
+        <div class="field"><label>Calories</label><input class="input" type="number" value="2450" placeholder="0"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px;">
+        <div class="field"><label>Hydration note</label><input class="input" type="text" placeholder="e.g. felt dehydrated by the last hour"></div>
+        <div class="field"><label>Body weight (kg)</label><input class="input" type="number" value="71.4"></div>
+      </div>
+      <div class="field" style="margin-bottom:16px;"><label>Notes</label><textarea class="input" rows="2" placeholder="Anything the coach should know"></textarea></div>
+      <button class="btn btn-primary">Log day</button>
+    </div>
+
+    <h2 style="font-size:15px;font-weight:700;margin-bottom:10px;">History</h2>
+    <table>
+      <thead><tr><th>Date</th><th>Carbs</th><th>Calories</th><th>Weight</th><th>Target</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">Mar 11</td><td>310 g</td><td>2,450 kcal</td><td>71.4 kg</td><td><span class="badge badge-good">Hit</span></td><td style="color:var(--ink-soft);">—</td></tr>
+        <tr><td class="mono">Mar 10</td><td>265 g</td><td>2,180 kcal</td><td>71.6 kg</td><td><span class="badge badge-critical">Missed</span></td><td style="color:var(--ink-soft);">Felt dehydrated by hour three</td></tr>
+        <tr><td class="mono">Mar 9</td><td>295 g</td><td>2,300 kcal</td><td>71.5 kg</td><td><span class="badge badge-good">Hit</span></td><td style="color:var(--ink-soft);">—</td></tr>
+        <tr><td class="mono">Mar 8</td><td>300 g</td><td>2,410 kcal</td><td>71.7 kg</td><td><span class="badge badge-good">Hit</span></td><td style="color:var(--ink-soft);">Rest day, easy on carbs</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+</body>
+</html>

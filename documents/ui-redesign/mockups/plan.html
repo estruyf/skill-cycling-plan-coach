@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today's plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#1B1F22; --ink-soft:#5B6368; --ink-faint:#8A9095;
+  --paper:#FAF8F4; --surface:#FFFFFF; --line:#E4E0D6; --line-soft:#EEEBE3;
+  --brand:#1D5C63; --brand-dark:#12363B; --brand-tint:#E1EEEC; --brand-strong:#144247;
+  --accent:#DD5B27; --accent-tint:#FBE7DB;
+  --good:#1F8A57; --good-tint:#E3F3EA;
+  --warning:#B9790A; --warning-tint:#FBF0D9;
+  --serious:#C2542E; --serious-tint:#FBE7DE;
+  --critical:#C22B2B; --critical-tint:#FAE0E0;
+  --radius-s:8px; --radius-m:12px; --radius-l:20px;
+  --shadow:0 1px 2px rgba(20,24,26,.04), 0 8px 24px rgba(20,24,26,.06);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;margin:0;letter-spacing:-0.01em;}
+a{color:var(--brand);text-decoration:none;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+button{font-family:inherit;}
+
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;color:#fff;font-size:14px;}
+.brand-name{font-family:'Sora';font-weight:700;font-size:15px;color:#fff;line-height:1.15;}
+.brand-sub{font-size:11px;color:rgba(243,241,234,.55);}
+.nav-item{padding:10px 12px;border-radius:10px;color:rgba(243,241,234,.72);font-size:14px;font-weight:500;}
+.nav-item.active{background:rgba(243,241,234,.14);color:#fff;}
+.nav-item:hover{color:#fff;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;font-family:'Sora';flex:0 0 32px;}
+.sidebar-foot-name{font-size:13px;font-weight:600;color:#fff;}
+.sidebar-foot-sub{font-size:11px;color:rgba(243,241,234,.55);}
+
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+.page-title{font-size:26px;font-weight:700;}
+.page-sub{color:var(--ink-soft);font-size:14px;margin-top:6px;max-width:640px;line-height:1.5;}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow);}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:var(--radius-s);font-size:14px;font-weight:600;border:1px solid transparent;cursor:pointer;white-space:nowrap;}
+.btn-primary{background:var(--brand);color:#fff;}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+.btn-sm{padding:6px 12px;font-size:13px;}
+
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;}
+.badge-brand{background:var(--brand-tint);color:var(--brand-strong);}
+.badge-accent{background:var(--accent-tint);color:#9A3E15;}
+.badge-good{background:var(--good-tint);color:var(--good);}
+.badge-warning{background:var(--warning-tint);color:var(--warning);}
+.badge-serious{background:var(--serious-tint);color:var(--serious);}
+.badge-critical{background:var(--critical-tint);color:var(--critical);}
+
+.select{border:1px solid var(--line);border-radius:var(--radius-s);padding:8px 10px;font-size:13.5px;background:var(--surface);color:var(--ink);}
+
+.workout-row{border:1px solid var(--line);border-radius:var(--radius-m);background:var(--surface);padding:16px 18px;}
+.workout-row.today{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand), var(--shadow);}
+.day-chip{width:44px;height:44px;border-radius:11px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Sora';flex:0 0 44px;}
+.day-chip .d{font-size:10px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;}
+.day-chip .n{font-size:15px;font-weight:700;}
+.target-chip{background:var(--paper);border:1px solid var(--line-soft);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--ink-soft);font-family:'JetBrains Mono';}
+
+body { display: flex; justify-content: center; padding: 24px; background: #E4E0D6; }
+</style>
+</head>
+<body>
+<div style="width:1440px;height:1060px;display:flex;background:var(--paper);overflow:hidden;">
+
+  <div class="card" style="width:248px;flex:0 0 248px;background:var(--brand-dark);border-radius:0;border:none;box-shadow:none;display:flex;flex-direction:column;padding:28px 18px;gap:28px;">
+    <div style="display:flex;align-items:center;gap:10px;padding:0 6px;">
+      <div class="brand-mark">CP</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="brand-name">Cycling Plan Coach</span>
+        <span class="brand-sub">Badlands Ultra · Jun 6</span>
+      </div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;flex:1;">
+      <a href="plan.html" class="nav-item active" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Today's plan
+      </a>
+      <a href="season.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L14 7l-3 5-2-3-3 6z"/></svg>
+        Season plan
+      </a>
+      <a href="nutrition.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7a3 3 0 0 0 6 0V3M10 3v7"/><path d="M17 3s-2 2-2 6 2 12 2 12"/></svg>
+        Nutrition log
+      </a>
+      <a href="strength.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.4 12h9.2"/></svg>
+        Strength log
+      </a>
+      <a href="compliance.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V11M12 21V7M19 21v-5M3 21h18"/></svg>
+        Compliance
+      </a>
+    </nav>
+    <div style="border-top:1px solid rgba(243,241,234,.14);padding-top:16px;display:flex;align-items:center;gap:10px;">
+      <div class="avatar">DM</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="sidebar-foot-name">David Macken</span>
+        <span class="sidebar-foot-sub">Diesel · FTP 268W</span>
+      </div>
+      <a href="login.html" style="margin-left:auto;color:rgba(243,241,234,.5);" title="Sign out">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;overflow:auto;padding:34px 42px 40px;display:flex;flex-direction:column;">
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:16px;">
+      <div>
+        <div class="eyebrow">Week of Mar 9 – Mar 15</div>
+        <h1 class="page-title">This week's plan</h1>
+        <p class="page-sub">Build phase · leaning into Badlands' durability and heat limiters ahead of the C2 trial event in three weeks.</p>
+      </div>
+      <button class="btn btn-ghost btn-sm">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg>
+        Ask coach to replan
+      </button>
+    </div>
+
+    <div class="card" style="padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:baseline;gap:14px;">
+        <span class="mono" style="font-size:40px;font-weight:600;line-height:1;color:var(--ink);">86</span>
+        <div style="display:flex;flex-direction:column;">
+          <span style="font-size:14px;font-weight:600;">days to Badlands Ultra</span>
+          <span style="font-size:12.5px;color:var(--ink-soft);">Self-supported gravel ultra · 340 km / 4,200 m</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="badge badge-brand">Build phase</span>
+        <span class="badge badge-accent">Next: C2 trial · Mar 29</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Mon</span><span class="n">9</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:600;font-size:14.5px;">Rest &amp; mobility</div>
+          <div style="font-size:12.5px;color:var(--ink-soft);margin-top:2px;">20 min mobility flow, optional easy spin</div>
+        </div>
+        <span class="badge badge-good"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Completed as planned</span>
+      </div>
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Tue</span><span class="n">10</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:600;font-size:14.5px;">Threshold intervals</div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+            <span class="target-chip">3 × 12 min @ 305W</span>
+            <span class="target-chip">6 min recovery</span>
+          </div>
+        </div>
+        <span class="badge badge-warning">Harder than planned</span>
+      </div>
+
+      <div class="workout-row today" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip" style="background:var(--brand-tint);border-color:var(--brand);"><span class="d" style="color:var(--brand-strong);">Wed</span><span class="n" style="color:var(--brand-strong);">11</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-weight:600;font-size:14.5px;">Endurance ride</span>
+            <span class="badge badge-brand" style="padding:2px 8px;">Today</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+            <span class="target-chip">2.5 hr Zone 2</span>
+            <span class="target-chip">Fasted, water only</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <select class="select">
+            <option>Completed as planned</option>
+            <option>Completed — easier than planned</option>
+            <option>Completed — harder than planned</option>
+            <option>Failed — too hard</option>
+            <option>Skipped</option>
+          </select>
+          <button class="btn btn-primary btn-sm">Log result</button>
+        </div>
+      </div>
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Thu</span><span class="n">12</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:600;font-size:14.5px;">Strength — lower body max</div>
+          <div style="font-size:12.5px;color:var(--ink-soft);margin-top:2px;">Trap-bar deadlift, split squat, calf raise</div>
+        </div>
+        <button class="btn btn-ghost btn-sm">Log session</button>
+      </div>
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Fri</span><span class="n">13</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:600;font-size:14.5px;">Rest</div>
+        </div>
+        <button class="btn btn-ghost btn-sm">Log result</button>
+      </div>
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Sat</span><span class="n">14</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-weight:600;font-size:14.5px;">Long ride — key session</span>
+            <span class="badge badge-accent">Key session</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+            <span class="target-chip">4 hr, 3 × 20 min tempo</span>
+            <span class="target-chip">90g carbs/hr fueling ramp</span>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm">Log result</button>
+      </div>
+
+      <div class="workout-row" style="display:flex;align-items:center;gap:14px;">
+        <div class="day-chip"><span class="d">Sun</span><span class="n">15</span></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:600;font-size:14.5px;">Recovery spin</div>
+          <div style="font-size:12.5px;color:var(--ink-soft);margin-top:2px;">45 min, conversational pace</div>
+        </div>
+        <button class="btn btn-ghost btn-sm">Log result</button>
+      </div>
+
+    </div>
+
+    <div style="margin-top:26px;">
+      <h2 style="font-size:15px;font-weight:700;margin-bottom:12px;">Coach notes</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="card" style="padding:12px 16px;">
+          <div style="font-size:11.5px;color:var(--ink-faint);margin-bottom:4px;">Bike session · Mar 10</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.5;">Tuesday's threshold set ran hot — trimmed Saturday's tempo reps from 4 × 20 to 3 × 20 to protect the long ride and keep the week's total load on track.</p>
+        </div>
+        <div class="card" style="padding:12px 16px;">
+          <div style="font-size:11.5px;color:var(--ink-faint);margin-bottom:4px;">Strength session · Mar 6</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.5;">Load progressed cleanly on trap-bar deadlift — added 5kg for next week's session.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

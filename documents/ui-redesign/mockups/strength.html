@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strength log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#1B1F22; --ink-soft:#5B6368; --ink-faint:#8A9095;
+  --paper:#FAF8F4; --surface:#FFFFFF; --line:#E4E0D6; --line-soft:#EEEBE3;
+  --brand:#1D5C63; --brand-dark:#12363B; --brand-tint:#E1EEEC; --brand-strong:#144247;
+  --accent:#DD5B27; --accent-tint:#FBE7DB;
+  --good:#1F8A57; --good-tint:#E3F3EA;
+  --warning:#B9790A; --warning-tint:#FBF0D9;
+  --serious:#C2542E; --serious-tint:#FBE7DE;
+  --critical:#C22B2B; --critical-tint:#FAE0E0;
+  --radius-s:8px; --radius-m:12px; --radius-l:20px;
+  --shadow:0 1px 2px rgba(20,24,26,.04), 0 8px 24px rgba(20,24,26,.06);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;margin:0;letter-spacing:-0.01em;}
+a{color:var(--brand);text-decoration:none;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+input,select,textarea{font-family:inherit;}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;color:#fff;font-size:14px;}
+.brand-name{font-family:'Sora';font-weight:700;font-size:15px;color:#fff;line-height:1.15;}
+.brand-sub{font-size:11px;color:rgba(243,241,234,.55);}
+.nav-item{padding:10px 12px;border-radius:10px;color:rgba(243,241,234,.72);font-size:14px;font-weight:500;}
+.nav-item.active{background:rgba(243,241,234,.14);color:#fff;}
+.nav-item:hover{color:#fff;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;font-family:'Sora';flex:0 0 32px;}
+.sidebar-foot-name{font-size:13px;font-weight:600;color:#fff;}
+.sidebar-foot-sub{font-size:11px;color:rgba(243,241,234,.55);}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+.page-title{font-size:26px;font-weight:700;}
+.page-sub{color:var(--ink-soft);font-size:14px;margin-top:6px;max-width:640px;line-height:1.5;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:var(--radius-s);font-size:14px;font-weight:600;border:1px solid transparent;cursor:pointer;}
+.btn-primary{background:var(--brand);color:#fff;}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+.btn-sm{padding:6px 12px;font-size:13px;}
+.btn-icon{width:32px;height:32px;padding:0;border-radius:var(--radius-s);border:1px solid var(--line);background:var(--surface);color:var(--ink-faint);display:inline-flex;align-items:center;justify-content:center;}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;}
+.badge-good{background:var(--good-tint);color:var(--good);}
+.badge-critical{background:var(--critical-tint);color:var(--critical);}
+.field label{font-size:12px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:6px;}
+.input{width:100%;border:1px solid var(--line);border-radius:var(--radius-s);padding:9px 11px;font-size:13.5px;background:var(--surface);color:var(--ink);}
+.exercise-row{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 32px;gap:10px;align-items:center;}
+.tag{background:var(--paper);border:1px solid var(--line-soft);border-radius:999px;padding:4px 11px;font-size:12px;color:var(--ink-soft);}
+
+body { display: flex; justify-content: center; padding: 24px; background: #E4E0D6; }
+</style>
+</head>
+<body>
+<div style="width:1440px;height:1060px;display:flex;background:var(--paper);overflow:hidden;">
+
+  <div class="card" style="width:248px;flex:0 0 248px;background:var(--brand-dark);border-radius:0;border:none;box-shadow:none;display:flex;flex-direction:column;padding:28px 18px;gap:28px;">
+    <div style="display:flex;align-items:center;gap:10px;padding:0 6px;">
+      <div class="brand-mark">CP</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="brand-name">Cycling Plan Coach</span>
+        <span class="brand-sub">Badlands Ultra · Jun 6</span>
+      </div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;flex:1;">
+      <a href="plan.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Today's plan
+      </a>
+      <a href="season.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L14 7l-3 5-2-3-3 6z"/></svg>
+        Season plan
+      </a>
+      <a href="nutrition.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7a3 3 0 0 0 6 0V3M10 3v7"/><path d="M17 3s-2 2-2 6 2 12 2 12"/></svg>
+        Nutrition log
+      </a>
+      <a href="strength.html" class="nav-item active" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.4 12h9.2"/></svg>
+        Strength log
+      </a>
+      <a href="compliance.html" class="nav-item" style="display:flex;align-items:center;gap:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V11M12 21V7M19 21v-5M3 21h18"/></svg>
+        Compliance
+      </a>
+    </nav>
+    <div style="border-top:1px solid rgba(243,241,234,.14);padding-top:16px;display:flex;align-items:center;gap:10px;">
+      <div class="avatar">DM</div>
+      <div style="display:flex;flex-direction:column;">
+        <span class="sidebar-foot-name">David Macken</span>
+        <span class="sidebar-foot-sub">Diesel · FTP 268W</span>
+      </div>
+      <a href="login.html" style="margin-left:auto;color:rgba(243,241,234,.5);" title="Sign out">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;overflow:auto;padding:34px 42px 40px;display:flex;flex-direction:column;">
+
+    <div style="margin-bottom:20px;">
+      <div class="eyebrow">Gym sessions</div>
+      <h1 class="page-title">Strength log</h1>
+      <p class="page-sub">Log sets, reps and load for each prescribed strength session.</p>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:26px;">
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:16px;">
+        <div class="field"><label>Session name</label><input class="input" type="text" value="Lower body max strength"></div>
+        <div class="field"><label>Status</label>
+          <select class="input"><option>Completed as planned</option><option>Completed — easier than planned</option><option>Completed — harder than planned</option><option>Failed — too hard</option><option>Skipped</option></select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:600;color:var(--ink-soft);">Exercises</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+        <div class="exercise-row">
+          <input class="input" type="text" value="Trap-bar deadlift">
+          <input class="input" type="number" value="4" placeholder="Sets">
+          <input class="input" type="number" value="5" placeholder="Reps">
+          <input class="input" type="number" value="90" placeholder="kg">
+          <button class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0-1 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 6"/></svg></button>
+        </div>
+        <div class="exercise-row">
+          <input class="input" type="text" value="Bulgarian split squat">
+          <input class="input" type="number" value="3" placeholder="Sets">
+          <input class="input" type="number" value="8" placeholder="Reps">
+          <input class="input" type="number" value="22" placeholder="kg">
+          <button class="btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0-1 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 6"/></svg></button>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm" style="margin-bottom:16px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add exercise
+      </button>
+
+      <div class="field" style="margin-bottom:16px;"><label>Notes</label><textarea class="input" rows="2" placeholder="How did it feel?"></textarea></div>
+      <button class="btn btn-primary">Log session</button>
+    </div>
+
+    <h2 style="font-size:15px;font-weight:700;margin-bottom:10px;">History</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card" style="padding:14px 18px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
+          <strong style="font-size:14px;">Lower body max strength</strong>
+          <span class="badge badge-good">Completed as planned</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="tag">Trap-bar deadlift · 4×5 @ 85 kg</span>
+          <span class="tag">Split squat · 3×8 @ 20 kg</span>
+          <span class="tag">Calf raise · 3×15 @ 40 kg</span>
+        </div>
+      </div>
+      <div class="card" style="padding:14px 18px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
+          <strong style="font-size:14px;">Upper body + core</strong>
+          <span class="badge badge-critical">Failed — too hard</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="tag">Pull-up · 3×6</span>
+          <span class="tag">Dead bug · 3×12</span>
+        </div>
+        <p style="margin:8px 0 0;font-size:12.5px;color:var(--ink-soft);">Shoulder felt off on pull-ups — stopped after set 2.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<workout_file>
+  <author>cycling-plan-coach</author>
+  <name>Sweet spot 2x15 (ramp-in)</name>
+  <description>2 x 15 min at 85% FTP, 5 min easy between. Reduced from the standard 2x20 as a ramp-in session after a 6+ month break. Set your device FTP to 205 W to match the plan.</description>
+  <sportType>bike</sportType>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.75">
+      <textevent timeoffset="0" message="Easy warm up. First structured session back after the break - take it gradually."/>
+    </Warmup>
+    <SteadyState Duration="900" Power="0.85">
+      <textevent timeoffset="0" message="Sweet spot - controlled, sustainable. This is a ramp-in week, don't chase last season's numbers."/>
+      <textevent timeoffset="450" message="Halfway. Hold the power, smooth pedalling."/>
+    </SteadyState>
+    <SteadyState Duration="300" Power="0.50">
+      <textevent timeoffset="0" message="Easy recovery - shake out the legs."/>
+    </SteadyState>
+    <SteadyState Duration="900" Power="0.85">
+      <textevent timeoffset="0" message="Second interval. Same effort as the first."/>
+      <textevent timeoffset="450" message="Last 7 min. Stay smooth, back off if it's not there today."/>
+    </SteadyState>
+    <Cooldown Duration="600" PowerLow="0.40" PowerHigh="0.55">
+      <textevent timeoffset="0" message="Well done - first key session back. Easy spin out."/>
+    </Cooldown>
+  </workout>
+</workout_file>

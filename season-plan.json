@@ -1,0 +1,127 @@
+{
+  "athleteId": "541a1163-261e-43bb-b4b5-5254fd3eab5f",
+  "targetEvent": "badlands-ultra",
+  "eventDate": "2027-08-31",
+  "startDate": "2026-09-28",
+  "ageBandAtGeneration": "under40",
+  "deloadWeeks": 1,
+  "generatedAt": "2026-09-28T00:00:00Z",
+  "lastReplannedAt": null,
+  "currentPhaseId": "base",
+  "phases": [
+    {
+      "id": "base",
+      "label": "Base",
+      "startDate": "2026-09-28",
+      "endDate": "2027-02-15",
+      "deload": false,
+      "focus": "Aerobic durability foundation, fat-max endurance volume, general-prep strength, establishing fueling-tolerance baseline"
+    },
+    {
+      "id": "deload-1",
+      "label": "Deload (Base -> Build)",
+      "startDate": "2027-02-15",
+      "endDate": "2027-02-22",
+      "deload": true,
+      "focus": "Reduced-volume reset before Build; no fitness-building intent"
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "startDate": "2027-02-22",
+      "endDate": "2027-05-24",
+      "deload": false,
+      "focus": "Badlands-specific limiter work (technical handling, altitude climbing, back-to-back days), max strength phase, fueling ramp toward race target"
+    },
+    {
+      "id": "deload-2",
+      "label": "Deload (Build -> Refine)",
+      "startDate": "2027-05-24",
+      "endDate": "2027-05-31",
+      "deload": true,
+      "focus": "Reduced-volume reset before Refine; no fitness-building intent"
+    },
+    {
+      "id": "refine",
+      "label": "Refine",
+      "startDate": "2027-05-31",
+      "endDate": "2027-08-31",
+      "deload": false,
+      "focus": "Race-specific rehearsal (loaded-bike, overnight, race-rate fueling), power/maintenance strength, culminating B2 dry run, then taper into race day"
+    }
+  ],
+  "trialEvents": [
+    {
+      "id": "c1",
+      "category": "C",
+      "targetDate": "2026-12-21",
+      "phaseId": "base",
+      "spec": {
+        "distanceKm": [150, 200],
+        "elevationM": [3000, 3750],
+        "limitersRehearsed": ["fat-max/low-intensity endurance", "back-to-back long days (partial)"],
+        "terrainFidelity": "low",
+        "overnight": false,
+        "loadedBike": false,
+        "fuelingTargetGh": 60,
+        "opportunisticResupply": false
+      },
+      "status": "planned",
+      "outcome": null
+    },
+    {
+      "id": "c2",
+      "category": "C",
+      "targetDate": "2027-03-29",
+      "phaseId": "build",
+      "spec": {
+        "distanceKm": [250, 300],
+        "elevationM": [4500, 6000],
+        "limitersRehearsed": ["fat-max/low-intensity endurance", "back-to-back long days", "durability"],
+        "terrainFidelity": "low",
+        "overnight": false,
+        "loadedBike": false,
+        "fuelingTargetGh": 90,
+        "opportunisticResupply": false
+      },
+      "status": "planned",
+      "outcome": null
+    },
+    {
+      "id": "b1",
+      "category": "B",
+      "targetDate": "2027-04-26",
+      "phaseId": "build",
+      "spec": {
+        "distanceKm": [250, 300],
+        "elevationM": [4500, 6000],
+        "limitersRehearsed": ["technical/loose-surface handling", "sustained high-altitude climbing"],
+        "terrainFidelity": "high",
+        "overnight": false,
+        "loadedBike": false,
+        "fuelingTargetGh": 105,
+        "opportunisticResupply": false
+      },
+      "status": "planned",
+      "outcome": null
+    },
+    {
+      "id": "b2",
+      "category": "B",
+      "targetDate": "2027-06-14",
+      "phaseId": "refine",
+      "spec": {
+        "distanceKm": null,
+        "elevationM": null,
+        "limitersRehearsed": ["loaded-bike handling", "sleep deprivation/overnight riding", "heat tolerance", "opportunistic-resupply fueling"],
+        "terrainFidelity": "high",
+        "overnight": true,
+        "loadedBike": true,
+        "fuelingTargetGh": 120,
+        "opportunisticResupply": true
+      },
+      "status": "planned",
+      "outcome": null
+    }
+  ]
+}

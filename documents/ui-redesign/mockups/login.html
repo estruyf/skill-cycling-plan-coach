@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#1B1F22; --ink-soft:#5B6368; --ink-faint:#8A9095;
+  --paper:#FAF8F4; --surface:#FFFFFF; --line:#E4E0D6;
+  --brand:#1D5C63; --brand-dark:#12363B; --brand-tint:#E1EEEC; --brand-strong:#144247;
+  --accent:#DD5B27; --accent-tint:#FBE7DB;
+  --radius-s:8px; --radius-m:12px; --radius-l:20px;
+  --shadow:0 1px 2px rgba(20,24,26,.04), 0 8px 24px rgba(20,24,26,.06);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);}
+h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;letter-spacing:-0.01em;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+.brand-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;color:#fff;font-size:15px;}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:6px;}
+.input{width:100%;border:1px solid var(--line);border-radius:var(--radius-s);padding:11px 13px;font-size:14.5px;background:var(--surface);color:var(--ink);}
+.btn-primary{width:100%;background:var(--brand);color:#fff;border:none;border-radius:var(--radius-s);padding:12px;font-size:14.5px;font-weight:700;cursor:pointer;}
+.stat-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-m);padding:14px 16px;}
+
+body { display: flex; justify-content: center; padding: 24px; background: #E4E0D6; }
+</style>
+</head>
+<body>
+<div style="width:1440px;height:900px;display:flex;background:var(--paper);overflow:hidden;font-family:'Public Sans';">
+
+  <div style="width:52%;background:var(--brand-dark);color:#F3F1EA;display:flex;flex-direction:column;justify-content:space-between;padding:56px;background-image:radial-gradient(circle at 85% 12%, rgba(221,91,39,.18), transparent 45%);">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="brand-mark">CP</div>
+      <span style="font-family:'Sora';font-weight:700;font-size:16px;">Cycling Plan Coach</span>
+    </div>
+
+    <div style="max-width:480px;">
+      <h1 style="font-size:38px;font-weight:700;line-height:1.15;margin-bottom:18px;">A coach that reads your data, not just your calendar.</h1>
+      <p style="font-size:15px;line-height:1.6;color:rgba(243,241,234,.78);">Strava power curves, Garmin readiness, and logged sessions feed a weekly plan and a season built around your event's own limiters — durability, fueling, terrain, heat.</p>
+    </div>
+
+    <div style="display:flex;gap:14px;">
+      <div class="stat-chip" style="flex:1;">
+        <div class="mono" style="font-size:22px;font-weight:600;">86</div>
+        <div style="font-size:12px;color:rgba(243,241,234,.6);margin-top:2px;">days to Badlands Ultra</div>
+      </div>
+      <div class="stat-chip" style="flex:1;">
+        <div class="mono" style="font-size:22px;font-weight:600;">22 wk</div>
+        <div style="font-size:12px;color:rgba(243,241,234,.6);margin-top:2px;">season macrocycle</div>
+      </div>
+      <div class="stat-chip" style="flex:1;">
+        <div class="mono" style="font-size:22px;font-weight:600;">5</div>
+        <div style="font-size:12px;color:rgba(243,241,234,.6);margin-top:2px;">trial-event ladder rungs</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:48%;display:flex;align-items:center;justify-content:center;padding:56px;">
+    <div style="width:100%;max-width:360px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:6px;">Sign in</h2>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:26px;line-height:1.5;">We'll email you a one-time link — no password to remember.</p>
+
+      <div class="field" style="margin-bottom:16px;">
+        <label>Email</label>
+        <div style="position:relative;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-faint);"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <input class="input" style="padding-left:36px;" type="email" placeholder="you@example.com">
+        </div>
+      </div>
+
+      <button class="btn-primary">Send sign-in link</button>
+
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:20px;line-height:1.6;">This account is for viewing your plan and logging sessions. Onboarding and plan changes still happen with your coach in Claude.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
